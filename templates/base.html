@@ -1,46 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--Link for Materialize Icons-->
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
 
-    <!--Link for Materialize cdn-->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css"
-    />
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!--Link for Materialize Icons-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
 
-    <!--Link to style.css-->
-    <link
-      rel="stylesheet"
-      href="{{url_for('static', filename='css/style.css')}}"
-      type="text/css"
-    />
+	<!--Link for Materialize cdn-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" />
 
-    <title>Document</title>
-  </head>
+	<!--Link to style.css-->
+	<link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}" type="text/css" />
 
-  <body>
-    <div class="container">
-      {% block content %} {% endblock %}
-    </div>
-    <!--Link for jQuery cdn-->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
-    <!--Link for Materialize JavaScript-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function () {
+	<title>Document</title>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="{{url_for('get_tasks')}}" class="brand-logo">Task Manager</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="{{url_for('get_tasks')}}">Home</a></li>
+					<li><a href="{{url_for('add_task')}}">Add Task</a></li>
+					<li><a href="{{url_for('get_categories')}}">Categories</a></li>
+					<li><a href="{{url_for('add_category')}}">Add Category</a></li>
+				</ul>
+			</div>
+		</nav>
+
+	</header>
+	<div class="container">
+		{% block content %} {% endblock %}
+	</div>
+	<!--Link for jQuery cdn-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"
+		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+	<!--Link for Materialize JavaScript-->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
         $(".collapsible").collapsible();
         $("select").material_select();
+        $('.sidenav').sidenav();
       });
 
       $(".datepicker").pickadate({
@@ -55,6 +58,7 @@
       document.getElementById("matfix").addEventListener("click", function (e) {
         e.stopPropagation();
       });
-    </script>
-  </body>
+	</script>
+</body>
+
 </html>
